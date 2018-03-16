@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+
+  config:
+    image: steeltoeoss/servers:configserver1.0-linux
+    ports:
+      - "8888:8888"
+    volumes:
+      - ~/steeltoe/config-repo:/steeltoe/config-repo
+
+  discovery:
+    image: steeltoeoss/servers:eurekaserver1.0-linux
+    ports:
+      - "8761:8761"
+
+  database:
+    image: mysql:5.7.21
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: steeltoe
+      MYSQL_DATABASE: steeltoe
+      MYSQL_USER: steeltoe
+      MYSQL_PASSWORD: steeltoe
+
+  ipc:
+    image: rabbitmq

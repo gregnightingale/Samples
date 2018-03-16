@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+
+  store:
+    build: ./src/MusicStoreService
+    image: musicstoreservice
+    ports:
+      - "5000:5000"
+
+  order:
+    build: ./src/OrderService
+    image: orderservice
+    ports:
+      - "7000:7000"
+
+  cart:
+    build: ./src/ShoppingCartService
+    image: shoppingcartservice
+    ports:
+      - "6000:6000"
+
+  ui:
+    build: ./src/MusicStoreUI
+    image: musicstoreui
+    ports:
+      - "5555:5555"
